@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<% include ../partials/header.ejs %>
+	<title>clckr</title>
+  </head>
+  <body>
+	<% include ../partials/nav.ejs %>
+	<h1 class="header">Questions<br><br>(732) 253-4352</h1>
+
+	<br><br><br>
+
+	<form method="post" action="/question">
+		<p>Enter a question!</p>
+		<p><input type="text" name="question" id="question"></p>
+		<p>A</p>
+		<p><input type="text" name="a" id="a"></p>
+		<p>B</p>
+		<p><input type="text" name="b" id="b"></p>
+		<p>C</p>
+		<p><input type="text" name="c" id="c"></p>
+		<p>D</p>
+		<p><input type="text" name="d" id="d"></p>
+		<input type="submit" value="Submit">
+	</form>
+  </body>
+</html>
