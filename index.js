@@ -1,5 +1,4 @@
 var express = require('express');
-var $ = jquery = require('jquery');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var twilio = require('twilio');
