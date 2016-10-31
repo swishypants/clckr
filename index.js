@@ -1,8 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient;
 var twilio = require('twilio');
-var d3 = require("d3");
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -21,14 +19,6 @@ server.listen(80);
 
 
 console.log('app running on port 5000');
-
-// mongo stuff
-MongoClient.connect("mongodb://localhost:27017/clckr", function(err, db) {
-	if(!err) {
-		console.log("Connected to mongo :D");
-	}
-	//var collection = db.collection('test');
-});
 
 io.on('connection', function (socket) {
 	//socket.emit('news', { hello: 'world' });
@@ -67,29 +57,34 @@ app.post('/question', function(req, res) {
 
 app.post('/submit', (req, res)=>{
 	var answer = req.body.Body.toLowerCase();
+	var message = '';
 	if(answer=='a') {
 		io.emit('news', { hello: '0' });
 		console.log('a');
+		message = 'Answer submitted!';
 	}
 	else if(answer=='b') {
 		io.emit('news', { hello: '1' });
 		console.log('b');
+		message = 'Answer submitted!';
 	}
 	else if(answer=='c') {
 		io.emit('news', { hello: '2' });
 		console.log('c');
+		message = 'Answer submitted!';
 	}
 	else if(answer=='d') {
 		io.emit('news', { hello: '3' });
 		console.log('d');
+		message = 'Answer submitted!';
 	}
 	else {
 		var resp = new twilio.TwimlResponse();
-		resp.message('Error: answer was not received in the accepted form');
+		message = 'Error: answer was not received in the accepted form';
 		res.send(resp.toString());
 	}
 	var resp = new twilio.TwimlResponse();
-	resp.message('Answer submitted!');
+	resp.message(message);
 	res.send(resp.toString());
 });
 
