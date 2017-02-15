@@ -3,3 +3,4 @@ Dockerfile
 docker-compose.yml
 
 config.js
+node_modules

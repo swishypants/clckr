@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<% include ../partials/header.ejs %>
+    <title>Finance app</title>
+  </head>
+  <body>
+  	<% include ../partials/nav.ejs %>
+  	<h1 class="header">Stock information</h1>
+
+    <table>
+      <% for(item in q[0]) { %>
+        <tr>
+          <td><%= item %></td>
+          <% for(var i=0; i<q.length; i++) { %>
+            <td><%= q[i][item] %></td>
+          <% } %>
+        </tr>
+      <% } %>
+    </table>
+
+  </body>
+</html>
